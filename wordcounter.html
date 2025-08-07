@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>word counter</title>
+</head>
+<style>
+    #form{
+        border: solid;
+        height: 400px;
+        width: 650px;
+        margin: 50px;
+        background-color: #f5f5f5;
+    }
+    #inputs{
+        height: 200px;
+        width: 400px;
+    }
+    #count{
+        margin-top: 10px;
+    }
+    #second{
+        display: none;   
+    }
+    h3{
+        text-align: center;
+    }
+     
+</style>
+<body>
+    <center>
+    <div id="form">
+        <h1 id="head">word counter</h1>
+        <textarea id="inputs" placeholder="enter the text"></textarea><br>
+        <button id="count" onclick="clicking()">count words</button>
+        <button type="reset" id="reset" onclick="resaw()"> reset</button>
+    </div>
+    <div id="second">
+        <h2 id="output">output</h2>
+        <h3 id="hthree">character(with space):</h3>
+        
+    </div>
+    </center>
+    
+</body>
+<script>
+    let inputs=document.getElementById("inputs");
+    let hthree=document.getElementById("hthree");
+    let reset=document.getElementById("reset");
+    appear=document.getElementById("second");
+    function clicking(){
+        let inp=inputs.value;
+    
+        if(inp.trim()===""){
+            alert("enter the paragraph first")
+        }
+        console.log(inp.trim().split(/\s+/));
+        hthree.innerText=`words in your paragrapg are${inp.trim().split(/\s+/).length}`;
+        appear.style.display="block";
+        
+    }
+    function resaw(){
+        inputs.value=""
+        appear.style.display="none";
+    }
+</script>
+</html>

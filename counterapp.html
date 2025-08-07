@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #demo1{
+            background-color: blueviolet;
+            color: white;
+            height: 180px;
+            width: 150px;
+            display: inline-block;
+
+        }
+        #demo{
+            text-align: center;
+            padding-top: 50px;
+        }
+        #plus{
+            background-color: yellowgreen;
+            height: 100px;
+            width: 50px;
+            display: inline;
+        }
+        #minus{
+            background-color: yellowgreen;
+            height: 100px;
+            width: 50px;
+            display: inline;
+        }
+        #reset{
+            background-color: rgb(205, 50, 187);
+            height: 100px;
+            width: 50px;
+            display: block;
+            margin: 50px;
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div id="demo1"><h1 id="demo">0</h1></div>
+    <button id="plus" onclick="pluses()">+</button>
+    <button id="minus" onclick="minuses()">-</button>
+    <button id="reset" onclick="rest()">reset</button>
+    
+</body>
+<script>
+    let number=document.getElementById("demo");
+    let plus=document.getElementById("plus");
+    let minus=document.getElementById("minus");
+    let reset=document.getElementById("reset");
+    let count=0
+    function pluses(){
+        count++;
+        number.innerText=count;
+    }
+    function minuses(){
+        count--;
+        number.innerText=count
+    }
+    function rest(){
+        number.innerText=0
+    }
+
+</script>
+</html>

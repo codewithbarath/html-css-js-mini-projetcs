@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #demo{
+        border: solid;
+        height: 200px;
+        width: 400px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: yellowgreen;
+        
+    }
+</style>
+<body>
+    <center><h1>tip calcultor</h1></center>
+    <center>
+    <form id="demo">
+        <table>
+            <tr>
+                <td>price</td><td><input id="price"></td>
+            </tr>
+            <tr>
+                <td>tips</td><td><input id="tips"></td>
+            </tr>
+            <tr>
+                <td>no of people</td><td><input id="people"></td>
+            </tr><br>
+            <tr>
+                <td>tip</td><td><input id="tip"></td>
+            </tr>
+            <tr>
+                <td>total amount</td><td><input id="amount"></td>
+            </tr>
+            <tr>
+                <td>tip person</td><td><input id="perperson"></td>
+            </tr>
+            <tr>
+                <td>total</td><td><input id="total"></td>
+            </tr>
+
+        </table>
+    </form>  
+   
+    <button id="calculating" onclick="findingpercent()">calculates</button> 
+    <button id="cancel">cancel</button>
+    </center> 
+</body>
+<script>
+    let price=document.getElementById("price");
+    let tips=document.getElementById("tips");
+    let peop=document.getElementById("people");
+    let tip=document.getElementById("tip");
+    let toatamount=document.getElementById("amount");
+    let tiperson=document.getElementById("perperson");
+    let toatl=document.getElementById("total");
+    
+    function findingpercent(){
+        let pr=parseFloat(price.value)
+        let ti=parseFloat(tips.value);
+        let pe=parseFloat(peop.value);
+        if(isNaN(pr) || isNaN(ti) || isNaN(pe)){
+            alert("enter the values firts");
+            return;
+        }
+        let stip=(ti/100)*pr;
+        let bunchamount=stip+pr;
+        let defperson=stip/2;
+        let tt=bunchamount/pe;
+        tip.value=stip;
+        toatamount.value=bunchamount;
+        tiperson.value=defperson;
+        total.value=tt;
+        
+    }
+    document.getElementById("cancel").addEventListener("click",function(){
+        price.value = "";
+        tips.value = "";
+        peop.value = "";
+        tip.value = "";
+        toatamount.value = "";
+        tiperson.value = "";
+        toatl.value = "";
+    })
+
+</script>
+</html>

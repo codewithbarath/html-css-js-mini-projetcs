@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        #generate {
+            display: inline;
+            color: blue;
+        }
+        #clear {
+            display: inline;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1 id="wipe">Random Number Generator App</h1>
+        Upper limit: <input type="number" id="demo1">
+        Lower limit: <input type="number" id="demo2">
+        <button id="generate" onclick="generatenumber()">Generate</button>
+        <button id="clear" onclick="clearFields()">Clear</button>
+        <h1 id="appear">hii</h1>
+    </center>
+
+    <script>
+        let upper = document.getElementById("demo1");
+        let lower = document.getElementById("demo2");
+        let appear = document.getElementById("appear");
+
+        function generatenumber() {
+            let first = parseInt(upper.value);
+            let last = parseInt(lower.value);
+
+            // Input validation
+            if (isNaN(first) || isNaN(last)) {
+                alert("First fill the numbers!");
+                return;
+            }
+
+            if (last >= first) {
+                alert("Lower limit must be less than upper limit!");
+                return;
+            }
+
+            let user = Math.floor(Math.random() * (first - last + 1)) + last;
+            appear.innerText = user;
+        }
+
+        function clearFields() {
+            upper.value = "";
+            lower.value = "";
+            appear.innerText = "hii";
+        }
+    </script>
+</body>
+</html>

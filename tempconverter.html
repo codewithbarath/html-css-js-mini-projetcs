@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temperature Converter</title>
+  <style>
+    #form {
+      border: solid;
+      height: 380px;
+      width: 500px;
+      margin-top: 150px;
+      background-color: rgba(0, 0, 255, 0.577);
+    }
+    body{
+        background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <div id="form">
+      <form>
+        <table>
+          <tr>
+            <td><h1>Temperature Converter App</h1></td>
+          </tr>
+          <tr>
+            <td>Enter temp: <input placeholder="Enter the temperature" id="input" /></td>
+          </tr>
+          <tr>
+            <td>
+              Convert from:
+              <select id="convertfrom">
+                <option value=""></option>
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Convert to:
+              <select id="convertto">
+                <option value=""></option>
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><button type="button" id="prepare" onclick="finding()">Prepare</button></td>
+          </tr>
+          <tr>
+            <td><button type="reset" id="reset">Reset</button></td>
+          </tr>
+          <tr>
+            <td><h1 id="result">See the result here</h1></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </center>
+
+  <script>
+    let input = document.getElementById("input");
+    let convertfrom = document.getElementById("convertfrom");
+    let convertto = document.getElementById("convertto");
+    let output = document.getElementById("result");
+
+    function finding() {
+      let ins = parseFloat(input.value);
+      let from = convertfrom.value;
+      let to = convertto.value;
+
+      if (isNaN(ins) || input.value.trim() === "") {
+        alert("Enter the temperature correctly");
+        return;
+      }
+      if (from === "") {
+        alert("Choose a valid 'convert from' unit");
+        return;
+      }
+      if (to === "") {
+        alert("Choose a valid 'convert to' unit");
+        return;
+      }
+
+      let result;
+
+      if (from === to) {
+        result = ins;
+      } else if (from === "celsius" && to === "fahrenheit") {
+        result = (ins * 9/5) + 32;
+      } else if (from === "fahrenheit" && to === "celsius") {
+        result = (ins - 32) * 5/9;
+      } else if (from === "celsius" && to === "kelvin") {
+        result = ins + 273.15;
+      } else if (from === "kelvin" && to === "celsius") {
+        result = ins - 273.15;
+      } else if (from === "fahrenheit" && to === "kelvin") {
+        result = ((ins - 32) * 5/9) + 273.15;
+      } else if (from === "kelvin" && to === "fahrenheit") {
+        result = ((ins - 273.15) * 9/5) + 32;
+      }
+
+      output.innerText = `Converted Temperature: ${result.toFixed(2)} ${to}`;
+    }
+  </script>
+</body>
+</html>
