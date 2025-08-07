@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tip Calculator</title>
+  <style>
+    #demo {
+      border: solid;
+      width: 400px;
+      padding: 10px;
+      background-color: yellowgreen;
+    }
+    input {
+      width: 120px;
+    }
+    #results {
+      display: none; /* Hide result section at start */
+    }
+  </style>
+</head>
+<body>
+  <center><h1>Tip Calculator</h1></center>
+  <center>
+    <form id="demo">
+      <table>
+        <tr>
+          <td>Price</td>
+          <td><input id="price" type="number"></td>
+        </tr>
+        <tr>
+          <td>Tips (%)</td>
+          <td><input id="tips" type="number"></td>
+        </tr>
+        <tr>
+          <td>No of People</td>
+          <td><input id="people" type="number"></td>
+        </tr>
+      </table>
+
+      <!-- Hidden section: appears after calculating -->
+      <div id="results">
+        <table>
+          <tr>
+            <td>Tip</td>
+            <td><input id="tip" readonly /></td>
+          </tr>
+          <tr>
+            <td>Total Amount</td>
+            <td><input id="amount" readonly /></td>
+          </tr>
+          <tr>
+            <td>Tip per Person</td>
+            <td><input id="perperson" readonly /></td>
+          </tr>
+          <tr>
+            <td>Total per Person</td>
+            <td><input id="total" readonly /></td>
+          </tr>
+        </table>
+      </div>
+
+      <button type="button" onclick="findingpercent()">Calculate</button>
+      <button type="button" id="cancel">Cancel</button>
+    </form>
+  </center>
+
+  <script>
+    let price = document.getElementById("price");
+    let tips = document.getElementById("tips");
+    let peop = document.getElementById("people");
+
+    let tip = document.getElementById("tip");
+    let amount = document.getElementById("amount");
+    let perperson = document.getElementById("perperson");
+    let total = document.getElementById("total");
+
+    let results = document.getElementById("results");
+
+    function findingpercent() {
+      let pr = parseFloat(price.value);
+      let ti = parseFloat(tips.value);
+      let pe = parseFloat(peop.value);
+
+      if (isNaN(pr) || isNaN(ti) || isNaN(pe) || pe === 0) {
+        alert("Please enter valid numbers");
+        return;
+      }
+
+      let tipAmount = (ti / 100) * pr;
+      let totalAmount = pr + tipAmount;
+      let tipPerPerson = tipAmount / pe;
+      let totalPerPerson = totalAmount / pe;
+
+      tip.value = tipAmount.toFixed(2);
+      amount.value = totalAmount.toFixed(2);
+      perperson.value = tipPerPerson.toFixed(2);
+      total.value = totalPerPerson.toFixed(2);
+
+      results.style.display = "block"; // Show result section
+    }
+
+    document.getElementById("cancel").addEventListener("click", function () {
+      price.value = "";
+      tips.value = "";
+      peop.value = "";
+      tip.value = "";
+      amount.value = "";
+      perperson.value = "";
+      total.value = "";
+      results.style.display = "none"; // Hide result section again
+    });
+  </script>
+</body>
+</html>
